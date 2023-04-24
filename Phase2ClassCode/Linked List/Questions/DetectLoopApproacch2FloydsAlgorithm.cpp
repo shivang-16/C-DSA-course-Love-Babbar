@@ -47,9 +47,9 @@ void print(node* tail){
 }
 
 //DETECT LOOP APPROACH 2-> FLOYD'S CYCLE DETECTION ALGORITHM
-bool floydDetectLopp(node* head){
+node* floydDetectLopp(node* head){
     if(head==NULL)
-    return false;
+    return NULL;
 
     node* slow = head;
     node* fast= head;
@@ -62,10 +62,10 @@ bool floydDetectLopp(node* head){
 
        if(slow == fast){
         cout<<"Loop present at "<<slow->data<<endl;
-        return true;
+        return slow;
        }
     }
-    return false;
+    return NULL;
 
 }
 
