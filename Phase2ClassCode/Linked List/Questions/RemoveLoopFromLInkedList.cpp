@@ -65,7 +65,7 @@ node* getStartingNode(node* head){
 
 /********************************************************************************************************************/
 //REMOVING THE LOOP FORM A LINKED LIST
-void RemoveLoop(node* head, node* tail){
+void RemoveLoop(node* head){
     if(head ==NULL)
     return;
 
@@ -77,6 +77,15 @@ void RemoveLoop(node* head, node* tail){
      }
 
      temp->next = NULL;
+
+     /*
+     //MY CODE -> NOT 100% SURE THIS IS VALID FOR ALL CASES OR NOT
+
+     node *startLoop=getStartingNode(head);
+     tail->next= startLoop; //(pass the node* tail in above function)
+     //breaking the loop
+     tail->next= NULL;   
+     */
 }
 /********************************************************************************************************************/
 
@@ -103,9 +112,9 @@ int main(){
     cout<<"Loop not present"<<endl;
 
     //Removing Loop
-    RemoveLoop(head, tail);
-    print(head);
+    RemoveLoop(head);
     cout<<"Loop Removed"<<endl;
+    print(head);
     
    //calling floyd function
     if(floydDetect(head))

@@ -86,7 +86,7 @@ bool isCircular(node* & head){
 /*********************************************************************************************************************/
 
 /*********************************************************************************************************************/
-//Q->DETECT LOOP
+//Q->DETECT LOOP APPROACH -1 MAP METHOD
 bool detectLoop(node* head){
     if(head == NULL){
         return false;
@@ -104,12 +104,70 @@ bool detectLoop(node* head){
         temp=temp->next;
     }
     return false;
-}/*********************************************************************************************************************/
+}
+/*********************************************************************************************************************/
+
+
+/*REMOVING LOOP CODE STARTS FROM HERE **********************************************************************************/
+
+//STEP-1 FLOYD'S LOOP DETECTION ALGORITHM APPRAOCH 2 FOR DETECTION LOOP
+node* floydDetect(node* head){
+    if(head==NULL)
+    return NULL;
+
+    node* slow=head;
+    node* fast=head;
+    while( slow != NULL && fast != NULL){
+        fast=fast->next;
+        if(fast!=NULL){
+            fast=fast->next;
+        }
+        slow = slow->next;
+
+        if(slow == fast){
+        return slow;
+    }
+    }
+    return NULL;
+}
+
+//STEP 2-> FINDING STARTING NODE
+node* getStartingNode(node* head){
+    if(head== NULL)
+    return NULL;
+
+    node* POI = floydDetect(head);
+
+    node* slow = head;
+    node* fast = POI;
+
+    while( slow != fast){
+        slow= slow->next;
+        fast = fast->next;
+    }
+    return slow;
+}
+
+//STEP 3-> NOW REMOVING LOOP REMOVING LOOP(ABOVE BOTH FUCNTION ARE USED IN THIS)
+void RemoveLoop(node* head){
+    if(head ==NULL)
+    return;
+
+    node* startLoop = getStartingNode(head);
+    node* temp = startLoop;
+
+    while(temp->next != startLoop){
+       temp = temp -> next;
+     }
+
+     temp->next = NULL;
+/*********************************************************************************************************************/
+}
 
 
 int main(){
     node* tail = NULL;
-    
+
 //inserting in empty list
     InsertNode(tail, 5, 3);
     print(tail);
@@ -145,6 +203,26 @@ int main(){
     cout<<"Loop not present"<<endl;
 /*********************************************************************************************************************/
     cout<<endl;
+
+ 
+/*********************************************************************************************************************/
+   //removing loop and again checking
+    RemoveLoop(tail);
+    cout<<"Loop removed"<<endl;
+
+
+    //checking for loop again after removing loop
+    if(detectLoop(tail))
+    cout<<"Loop Present"<<endl;
+    else
+    cout<<"Loop not present"<<endl;
+
+    //Circular Or Not checking again after removing loop
+    if(isCircular(tail))
+    cout<<"It is a Circular linked list"<<endl;
+    else
+    cout<<"Not a Circular linked list"<<endl;
+/*********************************************************************************************************************/
 
  return 0;
 }
