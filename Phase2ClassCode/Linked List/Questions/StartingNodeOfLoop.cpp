@@ -88,6 +88,12 @@ int main(){
     //creating a loop
     tail->next= head->next;
     
+     //calling floyd function
+    if(floydDetectLopp(tail))
+    cout<<"Loop is present"<<endl;
+    else
+    cout<<"Loop not present"<<endl;
+
 
     //starting node
     node* start = getStartingNode(head);
