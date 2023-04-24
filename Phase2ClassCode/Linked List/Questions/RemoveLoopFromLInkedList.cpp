@@ -69,10 +69,10 @@ void RemoveLoop(node* head){
     if(head ==NULL)
     return;
 
-    node* startLoop = getStartingNode(head);
-    node* temp = startLoop;
+    node* startNode = getStartingNode(head);
+    node* temp = startNode;
 
-    while(temp->next != startLoop){
+    while(temp->next != startNode){
        temp = temp -> next;
      }
 
@@ -103,7 +103,6 @@ int main(){
 
     //creating a loop
     tail->next = head->next->next;
-
      
    //calling floyd function
     if(floydDetect(head))
