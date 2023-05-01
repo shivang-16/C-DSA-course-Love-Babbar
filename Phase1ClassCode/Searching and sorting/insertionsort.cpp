@@ -6,8 +6,8 @@ void insertionSort(int arr[], int n){
         int j=i-1;
         for(; j>=0; j--){
             if(arr[j]>temp){
-                //shift karan padega
-                arr[j+1]=arr[j];
+                //shift karna padega
+                 arr[j+1]=arr[j];
             }
             else{
                 //ruk jao
