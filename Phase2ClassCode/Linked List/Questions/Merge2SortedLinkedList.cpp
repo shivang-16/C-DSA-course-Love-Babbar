@@ -91,7 +91,7 @@ int main(){
      
     //now merge both list
     cout<<"After merging"<<endl;
-    merge(head1, head2) ;
+    head2 = merge(head1, head2) ;
     print(head1); 
 }
 
