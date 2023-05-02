@@ -31,6 +31,9 @@ void print(node* head ){
 }
 
 //ADDING TWO LINKED LIST
+node* Addlist(node* &head){
+    
+}
 
 
 int main(){
