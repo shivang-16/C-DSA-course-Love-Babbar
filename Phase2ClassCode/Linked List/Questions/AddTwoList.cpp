@@ -60,8 +60,8 @@ void InsertDigitAtTail(node* &head, node* &tail, int val){
      tail = temp;
    }
 }
-
-
+/*
+//code for adding list
 node* Add(node* &head1, node* &head2){
     
      int carry= 0;
@@ -108,6 +108,39 @@ node* Add(node* &head1, node* &head2){
          }
          return ansHead;
 }
+*/
+
+//Alternate for above code (easy way)
+node* Add(node* &head1, node* &head2){
+    int carry=0;
+    node* ansHead = NULL;
+     node* ansTail = NULL;
+
+    while(head1 != NULL || head2 != NULL || carry != 0){
+    int val1=0;
+    if(head1 != NULL)
+      val1 = head1->data;
+
+    int val2=0;
+    if(head2!=NULL)
+      val2 = head2->data;
+
+    int sum = val1 + val2 + carry;
+    int digit = sum%10;
+    //create node and add in answer linked list
+    InsertDigitAtTail(ansHead, ansTail, digit);
+    carry = sum/10;
+
+    if(head1 != NULL)
+      head1 = head1 ->next;
+
+    if(head2 != NULL)
+       head2 = head2 ->next;
+   }
+   
+   return ansHead;
+}
+
 node* AddList(node* &head1, node* &head2){
     
     //step 1-> Reversing both list (since we start adding numbers from left so we have to reverse both list)
