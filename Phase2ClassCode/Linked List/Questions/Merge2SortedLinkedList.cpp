@@ -66,10 +66,10 @@ node* merge(node* head1, node* head2){
 
 }
 int main(){
-    node* node1 = new node(2);
-
+   
     //printing 1st list
     cout<<"1st List"<<endl;
+    node* node1 = new node(2);
     node* head1= node1;
     node* tail1 = node1;
     print(head1);
