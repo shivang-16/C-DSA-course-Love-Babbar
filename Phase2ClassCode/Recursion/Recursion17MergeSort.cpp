@@ -52,6 +52,7 @@ void mergesort(int *arr, int s, int e){
     return;
 
     int mid= (s+e)/2;
+
 //RECURSIVE RELATION
 
     //left part sort karenge
