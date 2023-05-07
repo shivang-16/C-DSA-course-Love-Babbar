@@ -27,7 +27,7 @@ string FirstNonRepeating(string A)
     {
         char ch = A[i];
 
-        // increasing count in order to keep track  of the frequency of each character
+        // increasing count in order to keep track of the frequency of each character
         count[ch]++;
 
         // pushing into the queue
