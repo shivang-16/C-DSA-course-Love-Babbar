@@ -51,4 +51,5 @@ int main(){
       vector<int>ans;
       ans = firstNegativeInK(v, 5, k);
       
+      
 }
