@@ -15,24 +15,28 @@ vector<int>firstNegativeInK(vector<int>&arr, int n, int k){
         }
       //now store ans;
       if(dq.size() > 0)
-      ans.push_back(dq.front());
+      ans.push_back(arr[dq.front()]);
       else
       ans.push_back(0);
 
     //step 2-> Process for remaning windows
-     for(int i=k; i<=n; i++){
+     for(int i=k; i<n; i++){
         //removal
-        if(dq.front() - i >= k)
+        if(i - dq.front()>= k)
         dq.pop_front();
-        else if(arr[i] < 0)//i.e negative number=> push in dq
+        
+        //addition
+        if(arr[i] < 0)//i.e negative number=> push in dq
         dq.push_back(i);
-     }  
+         
      //now store ans;
       if(dq.size() > 0)
-      ans.push_back(dq.front());
+      ans.push_back(arr[dq.front()]);
       else
       ans.push_back(0);
 
+     }  
+    
    return ans;   
 }
 
@@ -48,8 +52,13 @@ int main(){
       cout<<"Enter the window size: "<<endl;
       cin>>k;   
 
-      vector<int>ans;
-      ans = firstNegativeInK(v, 5, k);
-      
+    vector<int> ans = firstNegativeInK(v, v.size(), k);
+
+    for(int i = 0; i < ans.size(); i++){
+        cout<<ans[i]<<" ";
+    }
+    cout<<endl;
+    return 0;
+     
       
 }
