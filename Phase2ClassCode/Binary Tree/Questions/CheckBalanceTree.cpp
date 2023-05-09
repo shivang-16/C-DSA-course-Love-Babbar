@@ -47,21 +47,28 @@ int height(node* root){
     return ans;
 }
 
-//APPRAOCH 1-> DIAMETER OF A BINARY TREE (Time complexity = O(n2))
-int diameter(node* root){
+//APPRAOCH 1-> BALANCE BINARY TREE (Time complexity = O(n2))
+bool isBalance(node* root){
     //base case
     if(root == NULL)
-    return 0;
+    return true;
 
-    int opt1 = diameter(root->left);
-    int opt2 = diameter(root->right);
-    int opt3 = height(root->left)+ height(root->right) + 1;
-
-    int ans = max(opt1, max(opt2, opt3));//this function will give max among all three
-    return ans;
+    //recursive call
+    bool left = isBalance(root->left);
+    bool right = isBalance(root->right);
+      
+      //absolute diffrence
+    bool diff = abs (height(root->left) - height(root->right)) <= 1;
+    
+    if(left && right && diff){
+        return true;
+    }
+    else{
+        return false;
+    }
 }
 
-//APPRAOCH 2->(OMPTIMISED) DIAMETER OF A BINARY TREE (Time complexity = O(n))
+//APPRAOCH 2->(OMPTIMISED) BALANCE BINARY TREE (Time complexity = O(n))
 //use of pair
 
 
@@ -72,11 +79,13 @@ int main(){
     root = buildTree(root);
 
 
-    /*diametet of binary tree
-      input eg-> A-> 1 2 3 7 -1 -1 8 -1 -1 4 -1 -1 5 6 -1 -1 -1 (Diameter = 6)
-                 B-> 1 3 7 -1 -1 11 -1 -1 5 17 -1 -1 -1 (Diameter = 5)*/
-    int ans = diameter(root);
-    cout<<"Diameter of Binary Tree: "<<ans<<endl;  
+    /*Balance binary tree
+      input eg-> A-> 1 2 3 7 -1 -1 8 -1 -1 4 -1 -1 5 6 -1 -1 -1 (Balanced)
+                 B-> 1 2 4 -1 -1 -1  3 5 6 -1 -1 -1 -1 (Unbalanced)*/
+      if(isBalance(root))
+      cout<<"It is a Balance Tree "<<endl;
+      else
+      cout<<"NOT a Balance Tree"<<endl;
 
     return 0;
 } 
