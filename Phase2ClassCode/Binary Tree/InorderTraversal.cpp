@@ -1,7 +1,5 @@
 #include<iostream>
-#include<queue>
 using namespace std;
-
 class node{
     public:
     int data;
@@ -35,43 +33,35 @@ node* buildTree(node* root){
 
     return root;
 }
-void LevelOrderTraversal(node* root){
-    queue<node*>q;
-    q.push(root);
-    //seperator
-    q.push(NULL);
 
-    while(!q.empty()){
-        node* temp = q.front();
-        q.pop();
+void InorderTraversal(node* root){
+    //Inorder Traversal follows -> LNR
+   
+    //base case
+    if(root == NULL){
+        return;
+    }
 
-    if(temp == NULL){
-        cout<<endl;
-        if(!q.empty()){
-        //if some nodes still present then use seperator
-        q.push(NULL);
-       }
-    }
-    else{
-        cout<<temp->data<<" ";
-        if(temp->left){
-            q.push(temp->left);
-        }
-        if(temp->right){
-            q.push(temp->right);
-        }
-    }
-  }
+    //1-> L: Left me jao
+    InorderTraversal(root->left);
+
+    //2-> N: Print current node
+    cout<<root->data<<" ";
+
+    //3-> R: Right me jao
+    InorderTraversal(root->right);
 }
-  
+
 int main(){
-    node* root =NULL;
+    node* root = NULL;
 
     //creating tree
     root = buildTree(root);
-     
-    //input eg-> 1 3 7 -1 -1 11 -1 -1 5 17 -1 -1 -1
-    cout<<"Level Order Traversal "<<endl;
-    LevelOrderTraversal(root);
+
+    //indorder traversal
+      //input eg-> 1 3 7 -1 -1 11 -1 -1 5 17 -1 -1 -1
+    cout<<"Inorder Traversal: "<<" ";
+    InorderTraversal(root);
+
     return 0;
 }
