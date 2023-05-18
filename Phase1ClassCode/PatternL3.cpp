@@ -35,7 +35,7 @@ int main()
     int temp=end;
     while (end)
     {
-      cout << ram;
+      cout << temp;
       temp=temp-1;
       end = end - 1;
       
