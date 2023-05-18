@@ -32,13 +32,13 @@ int main()
    // int j=n;
   
     int end = n - i + 1;
-int ram=end;
+    int temp=end;
     while (end)
     {
       cout << ram;
-      ram=ram-1;
+      temp=temp-1;
       end = end - 1;
-      sk
+      
     }
     cout << endl;
     i = i + 1;
